@@ -15,6 +15,7 @@ public class NextActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		
 		// 删除欢迎界面
 		MainActivity.wel.finish();
 		
