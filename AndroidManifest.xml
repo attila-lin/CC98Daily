@@ -49,6 +49,10 @@
             android:name="com.cc.daily.MenuActivity"
             android:label="@string/title_activity_menu" >
         </activity>
+        <activity
+            android:name="com.cc.daily.HotActivity"
+            android:label="@string/title_activity_hot" >
+        </activity>
     </application>
 
 </manifest>

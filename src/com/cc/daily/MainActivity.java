@@ -48,8 +48,8 @@ public class MainActivity extends Activity {
 				@Override
 				public void run() {
 					Intent intent = new Intent();
-//					intent.setClass(MainActivity.this, NextActivity.class);
-					intent.setClass(MainActivity.this, ViewPage.class);
+					intent.setClass(MainActivity.this, NextActivity.class);
+//					intent.setClass(MainActivity.this, ViewPage.class);
 				    startActivity(intent);
 				}
 		}, 2*1000);
