@@ -55,6 +55,7 @@ public class MainActivity extends Activity {
 		}, 2*1000);
 		
 	}
+	
 	private void Scale() {
 		AnimationSet animationSet=new AnimationSet(true);  
         ScaleAnimation scaleAnimation=new ScaleAnimation(  
