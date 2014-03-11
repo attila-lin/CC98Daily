@@ -18,6 +18,7 @@ import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnLastItemVisibleListener;
@@ -65,6 +66,7 @@ public class NextActivity extends ListActivity implements OnRefreshListener<View
 //		ViewPager vp = mPullToRefreshViewPager.getRefreshableView();
 //		vp.setAdapter(new SamplePagerAdapter());
 		mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.pull_refresh_list);
+//		mPullRefreshListView.setDividerPadding(0);
 
 		// Set a listener to be invoked when the list should be refreshed.
 		mPullRefreshListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
@@ -128,6 +130,17 @@ public class NextActivity extends ListActivity implements OnRefreshListener<View
         menu.attachToActivity( this, SlidingMenu.SLIDING_CONTENT );
         menu.setMenu(R.layout.menu);
         /*** 初始化侧滑菜单 End ***/
+        
+        // Some existing RelativeLayout from your layout xml
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.relativite);
+
+        ImageView iv = new ImageView(this);
+        iv.setImageResource(R.drawable.date2);
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.leftMargin = 0;
+        params.topMargin = 0;
+        rl.addView(iv, params);
 	}
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
