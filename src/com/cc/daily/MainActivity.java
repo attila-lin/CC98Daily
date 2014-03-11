@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 
 
@@ -45,13 +44,12 @@ public class MainActivity extends Activity {
 	
 	    Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
-				@Override
-				public void run() {
-					Intent intent = new Intent();
-					intent.setClass(MainActivity.this, NextActivity.class);
-//					intent.setClass(MainActivity.this, ViewPage.class);
-				    startActivity(intent);
-				}
+			@Override
+			public void run() {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, NextActivity.class);
+			    startActivity(intent);
+			}
 		}, 2*1000);
 		
 	}

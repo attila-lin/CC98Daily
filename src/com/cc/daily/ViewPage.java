@@ -77,8 +77,6 @@ public class ViewPage extends Activity implements OnRefreshListener<ViewPager> {
 			myInflater = LayoutInflater.from(container.getContext());  
 			convertView = myInflater.inflate(R.layout.activity_page, null);
 			
-//			ImageView imageView = new ImageView(container.getContext());
-//			TextView textView = new TextView(container.getContext());
 			holder.icon = (ImageView) convertView.findViewById(R.id.myimageview);  
 	        holder.text = (TextView) convertView.findViewById(R.id.mytext);
 			
