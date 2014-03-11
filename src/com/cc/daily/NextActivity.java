@@ -37,10 +37,10 @@ public class NextActivity extends ListActivity implements OnRefreshListener<View
 //	private PullToRefreshViewPager mPullToRefreshViewPager;
 	
 
-	static final int MENU_MANUAL_REFRESH = 0;
-	static final int MENU_DISABLE_SCROLL = 1;
-	static final int MENU_SET_MODE = 2;
-	static final int MENU_DEMO = 3;
+//	static final int MENU_MANUAL_REFRESH = 0;
+//	static final int MENU_DISABLE_SCROLL = 1;
+//	static final int MENU_SET_MODE = 2;
+//	static final int MENU_DEMO = 3;
 
 	private LinkedList<String> mListItems;
 	private PullToRefreshListView mPullRefreshListView;
@@ -101,8 +101,8 @@ public class NextActivity extends ListActivity implements OnRefreshListener<View
 		// Need to use the Actual ListView when registering for Context Menu
 		registerForContextMenu(actualListView);
 
-		mListItems = new LinkedList<String>();
-		mListItems.addAll(Arrays.asList(mStrings));
+//		mListItems = new LinkedList<String>();
+//		mListItems.addAll(Arrays.asList(mStrings));
 
 		
 		MyAdapter adapter = new MyAdapter(this);
@@ -134,6 +134,14 @@ public class NextActivity extends ListActivity implements OnRefreshListener<View
         menu.setMenu(R.layout.menu);
         /*** 初始化侧滑菜单 End ***/
 	}
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+
+		Intent intent = new Intent();
+		intent.setClass(NextActivity.this, ViewPage.class);
+	    startActivity(intent);
+	}
+	
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -147,73 +155,73 @@ public class NextActivity extends ListActivity implements OnRefreshListener<View
 		// TODO Auto-generated method stub
 	}
 	
-	static class SamplePagerAdapter extends PagerAdapter {
-
-		private static int[] sDrawables = { R.drawable.no1, R.drawable.no2, R.drawable.no3,
-				R.drawable.no4, R.drawable.no5 };
-
-		@Override
-		public int getCount() {
-			return sDrawables.length;
-		}
-
-		@Override
-		public View instantiateItem(ViewGroup container, int position) {
-			ImageView imageView = new ImageView(container.getContext());
-			imageView.setImageResource(sDrawables[position]);
-
-			// Now just add ImageView to ViewPager and return it
-			container.addView(imageView, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-
-			return imageView;
-		}
-
-		@Override
-		public void destroyItem(ViewGroup container, int position, Object object) {
-			container.removeView((View) object);
-		}
-
-		@Override
-		public boolean isViewFromObject(View view, Object object) {
-			return view == object;
-		}
-
-		@Override
-		public void destroyItem(View arg0, int arg1, Object arg2) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void finishUpdate(View arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public Object instantiateItem(View arg0, int arg1) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public void restoreState(Parcelable arg0, ClassLoader arg1) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public Parcelable saveState() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public void startUpdate(View arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-	}
+//	static class SamplePagerAdapter extends PagerAdapter {
+//
+//		private static int[] sDrawables = { R.drawable.no1, R.drawable.no2, R.drawable.no3,
+//				R.drawable.no4, R.drawable.no5 };
+//
+//		@Override
+//		public int getCount() {
+//			return sDrawables.length;
+//		}
+//
+//		@Override
+//		public View instantiateItem(ViewGroup container, int position) {
+//			ImageView imageView = new ImageView(container.getContext());
+//			imageView.setImageResource(sDrawables[position]);
+//
+//			// Now just add ImageView to ViewPager and return it
+//			container.addView(imageView, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+//
+//			return imageView;
+//		}
+//
+//		@Override
+//		public void destroyItem(ViewGroup container, int position, Object object) {
+//			container.removeView((View) object);
+//		}
+//
+//		@Override
+//		public boolean isViewFromObject(View view, Object object) {
+//			return view == object;
+//		}
+//
+//		@Override
+//		public void destroyItem(View arg0, int arg1, Object arg2) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//
+//		@Override
+//		public void finishUpdate(View arg0) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//
+//		@Override
+//		public Object instantiateItem(View arg0, int arg1) {
+//			// TODO Auto-generated method stub
+//			return null;
+//		}
+//
+//		@Override
+//		public void restoreState(Parcelable arg0, ClassLoader arg1) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//
+//		@Override
+//		public Parcelable saveState() {
+//			// TODO Auto-generated method stub
+//			return null;
+//		}
+//
+//		@Override
+//		public void startUpdate(View arg0) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//	}
 	
 	
 	private class GetDataTask extends AsyncTask<Void, Void, String[]> {
@@ -225,7 +233,7 @@ public class NextActivity extends ListActivity implements OnRefreshListener<View
 				Thread.sleep(4000);
 			} catch (InterruptedException e) {
 			}
-			return mStrings;
+			return null;
 		}
 
 		@Override
@@ -265,12 +273,7 @@ public class NextActivity extends ListActivity implements OnRefreshListener<View
 
 		@Override
 		public long getItemId(int position) {
-			// TODO Auto-generated method stub
-			System.err.println("position = " + position);
 			
-			Intent intent = new Intent();
-			intent.setClass(NextActivity.this, ViewPage.class);
-		    startActivity(intent);
 		    
 			return position;
 		}
@@ -299,12 +302,13 @@ public class NextActivity extends ListActivity implements OnRefreshListener<View
 	            holder = (ViewHolder) convertView.getTag();  
 	        }  
 	        
-	        if(position == 0){
-	        	holder.icon.setMaxHeight(5);
-	        }
 	  
 	        holder.icon.setImageResource(s[position]);  
             holder.text.setText(t[position]);  
+            if(position == 0){
+            	holder.icon.setImageResource(R.drawable.date2); 
+            	holder.text.setText("");
+	        }
 	        
 	        return convertView;  
 	        
@@ -327,9 +331,9 @@ public class NextActivity extends ListActivity implements OnRefreshListener<View
         ImageView icon;  
 	 }
 
-	private String[] mStrings = { "Abbaye de Belloc", "Abbaye du Mont des Cats", "Abertam", "Abondance", "Ackawi",
-			"Acorn", "Adelost", "Affidelice au Chablis", "Afuega'l Pitu", "Airag", "Airedale", "Aisy Cendre",
-			"Allgauer Emmentaler", "Abbaye de Belloc", "Abbaye du Mont des Cats", "Abertam", "Abondance", "Ackawi",
-			"Acorn", "Adelost", "Affidelice au Chablis", "Afuega'l Pitu", "Airag", "Airedale", "Aisy Cendre",
-			"Allgauer Emmentaler" };
+//	private String[] mStrings = { "Abbaye de Belloc", "Abbaye du Mont des Cats", "Abertam", "Abondance", "Ackawi",
+//			"Acorn", "Adelost", "Affidelice au Chablis", "Afuega'l Pitu", "Airag", "Airedale", "Aisy Cendre",
+//			"Allgauer Emmentaler", "Abbaye de Belloc", "Abbaye du Mont des Cats", "Abertam", "Abondance", "Ackawi",
+//			"Acorn", "Adelost", "Affidelice au Chablis", "Afuega'l Pitu", "Airag", "Airedale", "Aisy Cendre",
+//			"Allgauer Emmentaler" };
 }

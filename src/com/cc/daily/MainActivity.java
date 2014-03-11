@@ -40,9 +40,9 @@ public class MainActivity extends Activity {
 		textView =(TextView)findViewById(R.id.textview); 
 		textView.setBackgroundColor(android.R.color.transparent);
 
+		// 缓慢变大
 		Scale(); 
-		
-	     
+	
 	    Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 				@Override
