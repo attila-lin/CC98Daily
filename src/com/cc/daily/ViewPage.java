@@ -26,15 +26,14 @@ public class ViewPage extends Activity implements OnRefreshListener<ViewPager> {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-
-		// 删除欢迎界面
-		MainActivity.wel.finish();
+//		// 删除欢迎界面
+//		MainActivity.wel.finish();
 		
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 		WindowManager.LayoutParams.FLAG_FULLSCREEN);//去掉信息栏
 		
-		setContentView(R.layout.activity_ptr_viewpager);
+		setContentView(R.layout.activity_viewpager);
 
 		mPullToRefreshViewPager = (PullToRefreshViewPager) findViewById(R.id.pull_refresh_viewpager);
 		mPullToRefreshViewPager.setOnRefreshListener(this);
@@ -60,8 +59,12 @@ public class ViewPage extends Activity implements OnRefreshListener<ViewPager> {
 
 		@Override
 		public View instantiateItem(ViewGroup container, int position) {
+			
 			ImageView imageView = new ImageView(container.getContext());
+			if(position == 0)
+				imageView.setMaxHeight(1);
 			imageView.setImageResource(sDrawables[position]);
+			
 
 			// Now just add ImageView to ViewPager and return it
 			container.addView(imageView, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);

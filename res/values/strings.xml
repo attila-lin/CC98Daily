@@ -7,5 +7,12 @@
     <string name="close">Hello world!</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="title_activity_hot">HotActivity</string>
+    
+    <string name="name">item</string>
+    <string name="text1">item1</string>
+    <string name="text2">item2</string>
+    <string name="text3">item3</string>
+    <string name="text4">item4</string>
+    <string name="text5">item5</string>
 
 </resources>
