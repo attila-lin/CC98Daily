@@ -3,6 +3,7 @@ package com.cc.daily;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -15,6 +16,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.handmark.pulltorefresh.extras.viewpager.PullToRefreshViewPager;
@@ -41,7 +43,56 @@ public class ViewPage extends Activity implements OnRefreshListener<ViewPager> {
 
 		ViewPager vp = mPullToRefreshViewPager.getRefreshableView();
 		vp.setAdapter(new SamplePagerAdapter(this));
+		
+		Intent intent = getIntent();
+        String value = intent.getStringExtra("position");
+        // 设置默认页
+		vp.setCurrentItem(Integer.parseInt( value ));
+		
+		
+		RelativeLayout rl = (RelativeLayout) findViewById(R.id.relativite2);
+
+		// 设置底
+        ImageView iv = new ImageView(this);
+        iv.setImageResource(R.drawable.date2);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+        		ViewGroup.LayoutParams.MATCH_PARENT, 
+        		ViewGroup.LayoutParams.MATCH_PARENT);
+        params.leftMargin = 0;
+        params.bottomMargin = 100;
+        rl.addView(iv, params);	
+        
+        // 设置收藏
+        ImageView iv1 = new ImageView(this);
+        iv.setImageResource(R.drawable.shou);
+        RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(
+        		ViewGroup.LayoutParams.WRAP_CONTENT, 
+        		ViewGroup.LayoutParams.WRAP_CONTENT);
+        params1.leftMargin = 0;
+        params1.bottomMargin = 100;
+        rl.addView(iv1, params1);	
+        
+        // 设置分享
+        ImageView iv2 = new ImageView(this);
+        iv.setImageResource(R.drawable.shou);
+        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(
+        		ViewGroup.LayoutParams.WRAP_CONTENT, 
+        		ViewGroup.LayoutParams.WRAP_CONTENT);
+        params2.leftMargin = 0;
+        params2.bottomMargin = 100;
+        rl.addView(iv2, params2);	
+        
+        // 设置点评
+        ImageView iv3 = new ImageView(this);
+        iv.setImageResource(R.drawable.shou);
+        RelativeLayout.LayoutParams params3 = new RelativeLayout.LayoutParams(
+        		ViewGroup.LayoutParams.WRAP_CONTENT, 
+        		ViewGroup.LayoutParams.WRAP_CONTENT);
+        params3.leftMargin = 0;
+        params3.bottomMargin = 100;
+        rl.addView(iv3, params3);	
 	}
+
 
 	@Override
 	public void onRefresh(PullToRefreshBase<ViewPager> refreshView) {
@@ -52,21 +103,19 @@ public class ViewPage extends Activity implements OnRefreshListener<ViewPager> {
 
 		private int[] sDrawables = { R.drawable.no1, R.drawable.no2, R.drawable.no3, R.drawable.no4, R.drawable.no5 };
 
-		 private LayoutInflater myInflater = null;
+		private LayoutInflater myInflater = null;
 
-		 Context c = null;
+		Context c = null;
 		 
-		 public SamplePagerAdapter(Context myContext)  
-		 {  
-		        c = myContext;  
-		 } 
+		public SamplePagerAdapter(Context myContext) {  
+		    c = myContext;  
+		   
+		} 
 		 
-		 
-		 @Override
+		@Override
 		public int getCount() {
 			return sDrawables.length;
 		}
-		
 	
 		@Override
 		public View instantiateItem(ViewGroup container, int position) {

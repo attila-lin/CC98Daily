@@ -131,7 +131,7 @@ public class NextActivity extends ListActivity implements OnRefreshListener<View
         menu.setMenu(R.layout.menu);
         /*** 初始化侧滑菜单 End ***/
         
-        // Some existing RelativeLayout from your layout xml
+        // 固定图标
         RelativeLayout rl = (RelativeLayout) findViewById(R.id.relativite);
 
         ImageView iv = new ImageView(this);
@@ -146,6 +146,7 @@ public class NextActivity extends ListActivity implements OnRefreshListener<View
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 
 		Intent intent = new Intent();
+		intent.putExtra("position", String.valueOf( position) );
 		intent.setClass(NextActivity.this, ViewPage.class);
 	    startActivity(intent);
 	}
